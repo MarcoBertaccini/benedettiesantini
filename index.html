@@ -429,9 +429,81 @@
     <!-- ===================== CONTATTI ===================== -->
     <section class="section section--navy" id="contatti" aria-labelledby="contatti-title">
       <div class="container">
-        <p class="eyebrow">06 — Contatti</p>
-        <h2 class="section-title" id="contatti-title">Contatti</h2>
-        <!-- Step 10 -->
+        <div class="section-head">
+          <div>
+            <p class="eyebrow reveal">06 — Contatti</p>
+            <h2 class="section-title reveal" id="contatti-title">Parliamo del tuo progetto</h2>
+          </div>
+          <p class="lead reveal" data-delay="1">
+            Raccontaci l&rsquo;intervento: dalla prima consulenza alla progettazione, fino
+            alla direzione lavori e al collaudo. Ti ricontattiamo per una prima valutazione.
+          </p>
+        </div>
+
+        <div class="contatti">
+          <div class="contatti__info reveal">
+            <p class="contatti__studio">Studio Tecnico Associato<br>Ing. Giovanni Benedetti e Ing. Elena Santini</p>
+
+            <ul class="contatti__list">
+              <li>
+                <span class="contatti__label">Sede</span>
+                <span class="contatti__value">Via Cerchia di Martorano, 1069<br>47521 Cesena (FC)</span>
+              </li>
+              <li>
+                <span class="contatti__label">Telefono</span>
+                <span class="contatti__value"><a href="tel:+390547632675">0547 632675</a></span>
+              </li>
+              <li>
+                <span class="contatti__label">Fax</span>
+                <span class="contatti__value">0547 630811</span>
+              </li>
+              <li>
+                <span class="contatti__label">Email</span>
+                <span class="contatti__value"><a href="mailto:mail@benedettiesantini.it">mail@benedettiesantini.it</a></span>
+              </li>
+            </ul>
+
+            <a class="contatti__map" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Cerchia+di+Martorano+1069+47521+Cesena+FC" target="_blank" rel="noopener">
+              <span class="contatti__map-grid" aria-hidden="true"></span>
+              <span class="contatti__pin" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+              </span>
+              <span class="contatti__map-label">Via Cerchia di Martorano, 1069 &middot; Cesena &nbsp;&rarr;&nbsp; Apri in mappe</span>
+            </a>
+          </div>
+
+          <form class="contatti__form reveal" data-delay="1" novalidate>
+            <div class="field">
+              <label for="f-nome">Nome e cognome</label>
+              <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+              <span class="field__error" data-for="f-nome" aria-live="polite"></span>
+            </div>
+            <div class="field field--row">
+              <div>
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required>
+                <span class="field__error" data-for="f-email" aria-live="polite"></span>
+              </div>
+              <div>
+                <label for="f-tel">Telefono <span class="field__opt">(facoltativo)</span></label>
+                <input id="f-tel" name="telefono" type="tel" autocomplete="tel">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-msg">Il tuo progetto</label>
+              <textarea id="f-msg" name="messaggio" rows="4" required></textarea>
+              <span class="field__error" data-for="f-msg" aria-live="polite"></span>
+            </div>
+            <div class="contatti__form-foot">
+              <button class="btn" type="submit">Invia richiesta</button>
+              <p class="contatti__note">Modulo dimostrativo &mdash; nessun dato viene inviato.</p>
+            </div>
+            <p class="contatti__success" role="status" hidden>
+              Grazie! Questo è un modulo dimostrativo: per contattare davvero lo Studio usa
+              i recapiti qui accanto.
+            </p>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -456,7 +528,38 @@
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="site-footer">
-    <!-- Step 10 -->
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect x="3.2" y="3.2" width="25.6" height="25.6" rx="3" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M16 7.2 L24.8 16 L16 24.8 L7.2 16 Z" stroke="currentColor" stroke-width="1.3"/>
+            <circle cx="16" cy="16" r="2.1" fill="currentColor"/>
+          </svg>
+        </span>
+        <div>
+          <p class="site-footer__name">Benedetti <span class="brand__amp">&amp;</span> Santini</p>
+          <p class="site-footer__desc">Studio Tecnico Associato di Ingegneria &middot; Cesena (FC)</p>
+        </div>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Navigazione footer">
+        <a href="#studio">Studio</a>
+        <a href="#ambiti">Ambiti</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#realizzazioni">Realizzazioni</a>
+        <a href="#contatti">Contatti</a>
+      </nav>
+
+      <div class="site-footer__contact">
+        <a href="tel:+390547632675">0547 632675</a>
+        <a href="mailto:mail@benedettiesantini.it">mail@benedettiesantini.it</a>
+      </div>
+    </div>
+    <div class="container site-footer__bottom">
+      <p>&copy; <span id="year">2026</span> Studio Benedetti &amp; Santini. Tutti i diritti riservati.</p>
+      <p class="site-footer__demo">Sito dimostrativo</p>
+    </div>
   </footer>
 
   <script src="js/main.js" defer></script>

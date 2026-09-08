@@ -103,6 +103,47 @@
     }, { passive: true });
   }
 
+  /* ---- Anno footer ----------------------------------------------------- */
+  var yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ---- Form contatti (demo, validazione client) ------------------------ */
+  (function () {
+    var form = document.querySelector(".contatti__form");
+    if (!form) return;
+    var success = form.querySelector(".contatti__success");
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function setError(field, msg) {
+      var err = form.querySelector('.field__error[data-for="' + field.id + '"]');
+      field.setAttribute("aria-invalid", msg ? "true" : "false");
+      if (err) err.textContent = msg || "";
+    }
+    function validate() {
+      var ok = true;
+      var nome = form.querySelector("#f-nome");
+      var email = form.querySelector("#f-email");
+      var msg = form.querySelector("#f-msg");
+      if (!nome.value.trim()) { setError(nome, "Inserisci il tuo nome."); ok = false; } else setError(nome, "");
+      if (!emailRe.test(email.value.trim())) { setError(email, "Inserisci un'email valida."); ok = false; } else setError(email, "");
+      if (!msg.value.trim()) { setError(msg, "Descrivi brevemente il progetto."); ok = false; } else setError(msg, "");
+      return ok;
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!validate()) {
+        var firstErr = form.querySelector('[aria-invalid="true"]');
+        if (firstErr) firstErr.focus();
+        return;
+      }
+      if (success) { success.hidden = false; }
+      form.querySelectorAll("input, textarea").forEach(function (el) { el.value = ""; el.setAttribute("aria-invalid", "false"); });
+    });
+    form.querySelectorAll("input, textarea").forEach(function (el) {
+      el.addEventListener("input", function () { if (el.getAttribute("aria-invalid") === "true") setError(el, ""); });
+    });
+  })();
+
   /* ---- Lightbox galleria ----------------------------------------------- */
   (function () {
     var lb = document.getElementById("lightbox");
