@@ -17,8 +17,62 @@
 
   <!-- ===================== HEADER ===================== -->
   <header class="site-header" id="site-header">
-    <!-- Step 3 -->
+    <div class="site-header__inner container">
+      <a class="brand" href="#home" aria-label="Benedetti e Santini — home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30" fill="none">
+            <rect x="3.2" y="3.2" width="25.6" height="25.6" rx="3" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M16 7.2 L24.8 16 L16 24.8 L7.2 16 Z" stroke="currentColor" stroke-width="1.3"/>
+            <circle cx="16" cy="16" r="2.1" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Benedetti&#8202;<span class="brand__amp">&amp;</span>&#8202;Santini</span>
+          <span class="brand__tag">Studio di Ingegneria</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navigazione principale">
+        <ul class="nav__list">
+          <li><a href="#studio">Studio</a></li>
+          <li><a href="#ambiti">Ambiti</a></li>
+          <li><a href="#servizi">Servizi</a></li>
+          <li><a href="#metodo">Metodo</a></li>
+          <li><a href="#realizzazioni">Realizzazioni</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro">
+          <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/>
+          </svg>
+          <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/>
+          </svg>
+        </button>
+        <a class="btn nav__cta" href="#contatti">Contattaci</a>
+        <button class="nav-toggle" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
   </header>
+
+  <!-- Menu mobile (fuori dall'header, sotto la barra) -->
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <nav aria-label="Navigazione mobile">
+      <ul class="mobile-nav__list">
+        <li><a href="#studio"><span class="mobile-nav__idx">01</span> Studio</a></li>
+        <li><a href="#ambiti"><span class="mobile-nav__idx">02</span> Ambiti di competenza</a></li>
+        <li><a href="#servizi"><span class="mobile-nav__idx">03</span> Servizi</a></li>
+        <li><a href="#metodo"><span class="mobile-nav__idx">04</span> Metodo</a></li>
+        <li><a href="#realizzazioni"><span class="mobile-nav__idx">05</span> Realizzazioni</a></li>
+        <li><a href="#contatti"><span class="mobile-nav__idx">06</span> Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <main id="main">
 
