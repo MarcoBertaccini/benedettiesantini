@@ -103,6 +103,64 @@
     }, { passive: true });
   }
 
+  /* ---- Lightbox galleria ----------------------------------------------- */
+  (function () {
+    var lb = document.getElementById("lightbox");
+    var items = Array.prototype.slice.call(document.querySelectorAll(".gallery__item"));
+    if (!lb || !items.length) return;
+    var img = lb.querySelector(".lightbox__img");
+    var curEl = document.getElementById("lb-cur");
+    var totEl = document.getElementById("lb-tot");
+    var btnClose = lb.querySelector(".lightbox__close");
+    var btnPrev = lb.querySelector(".lightbox__prev");
+    var btnNext = lb.querySelector(".lightbox__next");
+    var sources = items.map(function (it) {
+      var im = it.querySelector("img");
+      return { src: im.getAttribute("src"), alt: im.getAttribute("alt") || "" };
+    });
+    var index = 0, lastFocused = null;
+    if (totEl) totEl.textContent = String(sources.length);
+
+    function show(i) {
+      index = (i + sources.length) % sources.length;
+      img.setAttribute("src", sources[index].src);
+      img.setAttribute("alt", sources[index].alt);
+      if (curEl) curEl.textContent = String(index + 1);
+    }
+    function open(i) {
+      lastFocused = document.activeElement;
+      show(i);
+      lb.hidden = false;
+      requestAnimationFrame(function () { lb.classList.add("is-open"); });
+      document.body.style.overflow = "hidden";
+      btnClose.focus();
+    }
+    function close() {
+      lb.classList.remove("is-open");
+      document.body.style.overflow = "";
+      var done = function () { lb.hidden = true; lb.removeEventListener("transitionend", done); };
+      if (reduceMotion) lb.hidden = true; else lb.addEventListener("transitionend", done);
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+    items.forEach(function (it, i) { it.addEventListener("click", function () { open(i); }); });
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", function () { show(index - 1); });
+    btnNext.addEventListener("click", function () { show(index + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+    document.addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") show(index - 1);
+      else if (e.key === "ArrowRight") show(index + 1);
+      else if (e.key === "Tab") {
+        var f = [btnClose, btnPrev, btnNext];
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  })();
+
   /* ---- Reveal allo scroll ---------------------------------------------- */
   var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   if (reduceMotion || !("IntersectionObserver" in window)) {
