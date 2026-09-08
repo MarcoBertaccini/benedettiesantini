@@ -87,6 +87,22 @@
     sections.forEach(function (s) { spy.observe(s); });
   }
 
+  /* ---- Parallax leggero sull'immagine hero ----------------------------- */
+  var heroImg = document.querySelector(".hero__media img");
+  if (heroImg && !reduceMotion) {
+    var ticking = false;
+    var applyParallax = function () {
+      var y = window.scrollY;
+      if (y < window.innerHeight) {
+        heroImg.style.transform = "scale(1.06) translateY(" + (y * 0.06) + "px)";
+      }
+      ticking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!ticking) { window.requestAnimationFrame(applyParallax); ticking = true; }
+    }, { passive: true });
+  }
+
   /* ---- Reveal allo scroll ---------------------------------------------- */
   var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   if (reduceMotion || !("IntersectionObserver" in window)) {
